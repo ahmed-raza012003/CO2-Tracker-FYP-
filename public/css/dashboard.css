@@ -1,0 +1,156 @@
+
+    body {
+        font-size: 14px;
+        font-family: 'Arial', sans-serif;
+    }
+
+    /* Calculator Card Styling */
+    .calculator-card {
+        max-width: 700px;
+        margin: 0 auto;
+        background: linear-gradient(135deg, rgba(103, 195, 50, 0.8), rgba(128, 116, 25, 0.6)), url('/path/to/your/image.jpg') no-repeat center center / cover;
+        border-radius: 12px;
+        box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+    }
+
+    .form-label {
+        font-weight: bold;
+        color: #ffffff;
+    }
+
+    /* Item Box Style */
+    .item-box, .category-box {
+        border: 1px solid #ddd;
+        background: rgba(255, 255, 255, 0.8);
+        border-radius: 8px;
+        min-height: 100px;
+    }
+
+    /* Hover & Animation Effects */
+    .category-item:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        border-radius: 8px;
+        transition: background-color 0.3s ease;
+    }
+
+    .category-checkbox:checked + label {
+        font-weight: bold;
+        color: #28a745;
+    }
+
+    .submit-btn {
+        font-size: 1.2rem;
+        transition: background-color 0.4s ease;
+    }
+
+    .submit-btn:hover {
+        background-color: #218838;
+    }
+
+    /* Cool Notification Styles */
+    .cool-notification {
+        border-radius: 10px;
+        padding: 15px;
+        font-size: 18px;
+        font-weight: bold;
+        transition: all 0.3s ease-in-out;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .cool-notification.alert-success {
+        background: linear-gradient(90deg, #a8e063, #56ab2f);
+        color: white;
+    }
+
+    .cool-notification.alert-warning {
+        background: linear-gradient(90deg, #f6d365, #fda085);
+        color: white;
+    }
+
+    .cool-notification.alert-danger {
+        background: linear-gradient(90deg, #ff6b6b, #c0392b);
+        color: white;
+    }
+
+    /* Fade-in Animation for Items */
+    .fade-in-item {
+        opacity: 0;
+        animation: fadeIn 0.7s forwards;
+    }
+
+    @keyframes fadeIn {
+        to {
+            opacity: 1;
+        }
+    }
+
+    /* Spinner */
+    .spinner-border {
+        margin: 0 auto;
+        display: block;
+    }
+
+
+/* <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const categoriesContainer = document.getElementById('categories-container');
+        const itemsContainer = document.getElementById('items-container');
+        const form = document.getElementById('co2Form');
+        const submitBtn = document.querySelector('.submit-btn');
+
+        categoriesContainer.addEventListener('change', function(e) {
+            if (e.target && e.target.classList.contains('form-check-input')) {
+                const selectedCategories = Array.from(categoriesContainer.querySelectorAll('.form-check-input:checked')).map(input => input.value);
+                fetchItems(selectedCategories);
+            }
+        });
+
+        function fetchItems(categories) {
+            itemsContainer.innerHTML = '<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>';
+
+            if (categories.length === 0) {
+                itemsContainer.innerHTML = '<p class="text-muted">Select categories to view items.</p>';
+                return;
+            }
+
+            fetch('{{ route('calculator.getItems') }}', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                },
+                body: JSON.stringify({ categories: categories })
+            })
+            .then(response => response.json())
+            .then(data => {
+                itemsContainer.innerHTML = '';
+                if (data.items.length > 0) {
+                    data.items.forEach(item => {
+                        const itemHtml = `
+                            <div class="form-check mb-2 fade-in-item">
+                                <input class="form-check-input" type="checkbox" name="items[]" value="${item.id}" id="item-${item.id}">
+                                <label class="form-check-label ms-2 text-dark" for="item-${item.id}">
+                                    ${item.name} - ${item.co2_value} CO2
+                                </label>
+                            </div>
+                        `;
+                        itemsContainer.innerHTML += itemHtml;
+                    });
+                } else {
+                    itemsContainer.innerHTML = '<p class="text-muted">No items available for selected categories.</p>';
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching items:', error);
+            });
+        }
+
+        form.addEventListener('submit', function() {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> Calculating...';
+        });
+    });
+</script>
+
+@endsection */

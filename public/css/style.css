@@ -1,0 +1,182 @@
+/* Navbar styles */
+.navbar {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease;
+}
+
+.navbar.scrolled {
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px); /* Adds a glass effect */
+}
+
+/* Navbar hover effect */
+.nav-link {
+    color: #343a40; /* Dark text */
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    color: #28a745; /* Green on hover */
+}
+
+/* Make buttons look like links */
+.nav-link.btn-success,
+.nav-link.btn-outline-light {
+    padding: 20px 30px; /* Match the link padding */
+    display: inline-block; /* Ensure they behave like links */
+}
+
+/* Hover effects for buttons */
+.nav-link.btn-success:hover,
+.nav-link.btn-outline-light:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+/* Buttons */
+.btn {
+    transition: background-color 0.3s, transform 0.3s;
+    border-radius: 50px; /* Rounded buttons */
+    padding: 10px 30px; /* Padding for buttons */
+}
+
+.btn-success {
+    background-color: #28a745; /* Green background */
+    color: white; /* White text */
+}
+
+.btn-success:hover {
+    background-color: #218838; /* Darker green on hover */
+}
+
+.btn-outline-light {
+    border-color: white; /* White border */
+    color: white; /* White text */
+}
+
+.btn-outline-light:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Light overlay on hover */
+}
+
+/* Image hover effects */
+img {
+    transition: transform 0.3s;
+}
+
+img:hover {
+    transform: scale(1.05);
+}
+
+/* Section padding */
+section {
+    padding: 80px 0;
+}
+
+/* Welcome Section overlay */
+#welcome {
+    background-attachment: fixed;
+    text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
+    height: 91vh;
+}
+
+#welcome .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7); /* Darker overlay */
+    z-index: 1;
+}
+
+/* Cards in the intro section */
+.card {
+    transition: transform 0.3s ease-in-out;
+    border-radius: 1rem;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+/* Icon size and color */
+.bi {
+    font-size: 2.5rem;
+}
+
+/* Section heading animation */
+h2, h3 {
+    animation: fadeIn 1s ease forwards;
+}
+
+/* Welcome Section animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+    0% { opacity: 0; transform: translateY(-30px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.animate__fadeInDown {
+    animation: fadeInDown 1s ease-out;
+}
+
+/* Footer styles */
+.footer {
+    background-color: #343a40; /* Dark background color */
+    color: white; /* White text */
+    padding: 60px 0; /* Increased padding */
+}
+
+.footer h5 {
+    font-size: 1.5rem; /* Larger font size for header */
+    margin-bottom: 20px; /* Space below header */
+}
+
+.footer .list-inline-item {
+    margin: 0 15px; /* Space between footer links */
+}
+
+.footer .list-inline-item a {
+    color: white; /* Ensure link color is white */
+    transition: color 0.3s ease; /* Smooth transition for color */
+}
+
+.footer .list-inline-item a:hover {
+    color: #28a745; /* Change color on hover */
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .display-3 {
+        font-size: 2.5rem;
+    }
+    .btn-lg {
+        font-size: 1.2rem;
+        padding: 0.75rem 1.5rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .navbar-nav {
+        flex-direction: column;
+        align-items: center;
+    }
+    .nav-link {
+        padding: 0.5rem 0;
+    }
+}
+
+@media (min-width: 577px) and (max-width: 992px) {
+    .container {
+        max-width: 90%;
+    }
+}
+
+@media (min-width: 993px) {
+    .container {
+        max-width: 80%;
+    }
+}
